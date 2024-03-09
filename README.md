@@ -100,20 +100,21 @@ vim /etc/apt/source.list
 4. 将文件内容清空，然后复制下方代码粘贴，wq保存退出即可。  
 
 ```
-deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
-deb-src https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb https://mirrors.aliyun.com/ubuntu-ports/ jammy main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu-ports/ jammy main restricted universe multiverse
 
-deb https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
-deb-src https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb https://mirrors.aliyun.com/ubuntu-ports/ jammy-security main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu-ports/ jammy-security main restricted universe multiverse
 
-deb https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
-deb-src https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb https://mirrors.aliyun.com/ubuntu-ports/ jammy-updates main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu-ports/ jammy-updates main restricted universe multiverse
 
-# deb https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+# deb https://mirrors.aliyun.com/ubuntu-ports/ jammy-proposed main restricted universe multiverse
+# deb-src https://mirrors.aliyun.com/ubuntu-ports/ jammy-proposed main restricted universe multiverse
 
-deb https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
-deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb https://mirrors.aliyun.com/ubuntu-ports/ jammy-backports main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu-ports/ jammy-backports main restricted universe multiverse
+
 ```
 # 在Ubuntu上设置DST服务器
 ## 1. 安装依赖：  
