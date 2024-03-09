@@ -33,3 +33,10 @@ sudo systemctl status ssh
 ip add
 ```
 3. ss
+## 打开ubuntu的ssh和sftp:
+1. 打开ssh指令:
+```
+sudo apt update
+sudo apt install openssh-server
+```
+
