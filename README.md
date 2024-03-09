@@ -32,3 +32,4 @@ sudo systemctl status ssh
 ```
 ip add
 ```
+3. ss
