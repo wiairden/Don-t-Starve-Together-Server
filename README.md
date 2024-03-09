@@ -27,7 +27,8 @@ sudo systemctl status ssh
 ```
 
 输出将会告诉你服务正在运行，并且启用开机启动  
-2.查看ip地址:
+
+2. 查看ip地址:
 ```
 ip add
 ```
