@@ -7,7 +7,6 @@
 
 ```list disk```  
 
-
 4. 以上为例，输入【select disk=0】，选中磁盘0。
 
 ```select disk=0```
