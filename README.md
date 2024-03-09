@@ -64,7 +64,7 @@ sudo usermod -a -G ssh-users admin
 注：-a参数的意思是不从其他用户组用移除用户。
 执行如下命令，编辑SSH配置文件。  
 ```
-sudo nano /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 在sshd_config文件的中，添加如下内容。  
 ```
