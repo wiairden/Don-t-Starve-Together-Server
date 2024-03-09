@@ -5,7 +5,7 @@
 
 3.输入【list disk】，显示磁盘信息
 
-```list disk```  
+```list disk```
 
 4. 以上为例，输入【select disk=0】，选中磁盘0。
 
