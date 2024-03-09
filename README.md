@@ -76,17 +76,18 @@ Match Group sftp-users
     ForceCommand internal-sftp
 ```
 ## 将源更换为阿里云源:
-Ubuntu采用apt作为软件安装工具，其镜像源列表记录在/etc/apt/source.list文件中。
+1. Ubuntu采用apt作为软件安装工具，其镜像源列表记录在/etc/apt/source.list文件中。
 
 首先将source.list复制为source.list.bak备份。
 ```
 cp /etc/apt/source.list /etc/apt/source.list.bak
 ```
-修改完成后保存source.list文件，需要执行命令后才能生效：
+2. 修改完成后保存source.list文件，需要执行命令后才能生效：
 ```
 sudo apt update
 ```
-本文为 Ubuntu 22.04 的阿里云镜像源列表。若为其他版本，将所有jammy更改为其他版本代号即可。
+3. 本文为 Ubuntu 22.04 的阿里云镜像源列表。
+若为其他版本，将所有jammy更改为其他版本代号即可。
 常用的Ubuntu版本代号如下：
 Ubuntu 22.04：jammy
 Ubuntu 20.04：focal
@@ -96,7 +97,7 @@ Ubuntu 16.04：xenia
 vim /etc/apt/source.list
 ```
 
-将文件内容清空，然后复制下方代码粘贴，wq保存退出即可。  
+4. 将文件内容清空，然后复制下方代码粘贴，wq保存退出即可。  
 
 ```
 deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
