@@ -1,4 +1,6 @@
 # Don-t-Starve-Together-Server
+## 清除烧录系统硬盘分区受到保护解决方法：  
+
 1.使用管理员进入CMD
 
 2.在C:\Windows\system32下输入【diskpart】，进入DiskPart  
