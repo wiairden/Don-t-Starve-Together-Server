@@ -126,3 +126,111 @@ app_update 343050 validate
 quit
 ````
 'app_update 343050 validate'是去steam中下载饥荒联机服务器的命令，需要等待一会，当执行完成后输入'quit'退出steam服务
+## 3.创建服务器存档
+这里需要使用到FileZilla工具，简单理解为一个系统间服务器传输文件的工具，到官网下载，网上也有使用教程  
+
+创建游戏->创建世界，具体想设置什么自己调一下，洞穴记得勾选，模组也根据自己需求选上，创建好世界开始后加载到如下选人物页面就完成了 
+
+在服务器中创建存档的文件夹
+```
+mkdir -p ~/.klei/DoNotStarveTogether/Cluster_1
+```
+
+在本地电脑中的C://User/xxx/文档/klei/DoNotStarveTogether文件夹下，找到你刚才创建的饥荒存档，上传到服务器的/.klei/DoNotStarveTogether/Cluster_1这个文件夹里面（上面创建的），具体操作一会会用FileZilla实现  
+
+回到饥荒联机版主页面，获取服务器token  
+
+依次选择'账号'->'游戏'  
+
+进入  
+
+复制令牌，记得是全部  
+
+在本地电脑，还是刚刚游戏存档的位置，创建cluster_token.txt文件，记事本打开，把刚刚复制的令牌粘贴进去 
+
+该目录下创建cluster_token.txt文件  
+
+保存  
+
+复制自己的Klei用户ID，一会用来创建管理员权限  
+
+复制灰色的ID  
+
+设置管理员权限  
+
+设置服务器密码、人数等  
+
+自行设置
+
+把设置好的存档传入服务器  
+
+使用FileZilla  
+
+连接服务器  
+
+输入密码，密码是你在服务器给root设置过的密码  
+
+输入密码，提示什么都点确定  
+
+连接成功  
+
+设置启动脚本  
+
+编写服务器中启动饥荒服务器的脚本  
+
+根目录下，创建并设置脚本文件  
+```
+cd ~
+vim boot.sh
+```
+把如下代码粘贴到刚创建的boot.sh
+```
+#!/bin/bash
+
+steamcmd_dir="$HOME/steamcmd"
+install_dir="$HOME/dontstarvetogether_dedicated_server"
+cluster_name="Cluster_1"
+dontstarve_dir="$HOME/.klei/DoNotStarveTogether"
+
+function fail() {
+    echo Error: "$@" >&2
+    exit 1
+}
+
+function check_for_file() {
+    if [ ! -e "$1" ]; then
+        fail "Missing file: $1"
+    fi
+}
+
+cd "$steamcmd_dir" || fail "Missing $steamcmd_dir directory!"
+check_for_file "steamcmd.sh"
+check_for_file "$dontstarve_dir/$cluster_name/cluster.ini"
+check_for_file "$dontstarve_dir/$cluster_name/cluster_token.txt"
+check_for_file "$dontstarve_dir/$cluster_name/Master/server.ini"
+check_for_file "$dontstarve_dir/$cluster_name/Caves/server.ini"
+check_for_file "$install_dir/bin"
+cd "$install_dir/bin64" || fail
+run_shared=(./dontstarve_dedicated_server_nullrenderer_x64)
+run_shared+=(-console)
+run_shared+=(-cluster "$cluster_name")
+run_shared+=(-monitor_parent_process $$)
+run_shared+=(-shard)
+"${run_shared[@]}" Caves | sed 's/^/Caves: /' &
+"${run_shared[@]}" Master | sed 's/^/Master: /'
+```
+
+注意：代码粘贴完毕后按“：”，然后输入“wq”，回车，便可保存并退出
+
+该设置中的启动方式为64位服务器，想启动32位的如下修改
+
+修改这两行
+如下：
+```
+cd "$install_dir/bin" || fail
+run_shared=(./dontstarve_dedicated_server_nullrenderer)
+```
+设置boot.sh权限
+
+sudo chmod u+x boot.sh
+饥荒服务器还剩下最后模组mods部分，下面单独放一个模块说明 
