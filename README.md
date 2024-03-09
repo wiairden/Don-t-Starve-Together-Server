@@ -18,3 +18,16 @@
 7.删除分区使用```delete partition```命令，恢复分区需要 强制保护参数【override】命令如下  
 
 ```delete partition override```
+# 使用的系统为ubuntu  
+## 常用命令记录:  
+1. SSH 服务将会被自动启动。你可以验证 SSH 是否正在运行，输入：  
+
+```
+sudo systemctl status ssh
+```
+
+输出将会告诉你服务正在运行，并且启用开机启动  
+2.查看ip地址:
+```
+ip add
+```
