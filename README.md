@@ -39,4 +39,40 @@ ip add
 sudo apt update
 sudo apt install openssh-server
 ```
+2. 打开sftp:
+执行如下命令，创建SFTP用户组，方便进行管理测试。  
+
+>提示：也可以不进行创建，直接使用root用户。  
+
+```
+sudo addgroup sftp-test
+```  
+
+依次执行如下命令，创建SFTP用户，并配置相应权限。  
+
+```
+sudo adduser alice
+sudo usermod -G sftp-test -s /bin/false alice
+```
+
+依次执行如下命令，创建SSH用户组，并把管理员加入到该组。  
+
+```
+sudo addgroup ssh-users
+sudo usermod -a -G ssh-users admin
+```
+注：-a参数的意思是不从其他用户组用移除用户。
+执行如下命令，编辑SSH配置文件。  
+```
+sudo nano /etc/ssh/sshd_config
+```
+在sshd_config文件的中，添加如下内容。  
+```
+AllowGroups ssh-users sftp-users
+Match Group sftp-users
+   ChrootDirectory /home/sftp_root
+   AllowTcpForwarding no
+   X11Forwarding no
+    ForceCommand internal-sftp
+```
 
