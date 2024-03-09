@@ -75,4 +75,54 @@ Match Group sftp-users
    X11Forwarding no
     ForceCommand internal-sftp
 ```
+# 在Ubuntu上设置DST服务器
+## 1. 安装依赖：  
+安装服务器所需steam和饥荒的依赖  
 
+用有sudo权限的用户登录服务器，一般直接用root用户就行  
+```
+sudo add-apt-repository multiverse
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install libstdc++6 libgcc1 libcurl4-gnutls-dev:i386 lib32z1
+```
+第一行指令如果提示'add-apt-repository command not found'通过如下方式解决：
+```
+sudo apt update
+sudo apt install software-properties-common
+sudo apt update
+```
+注意：有些源里可能没有libcurl4-gnutls-dev，需要直接安装：
+```
+cd /usr/lib/
+ln -s libcurl.so.4 libcurl-gnutls.so.4
+```
+
+如果一会启动饥荒服务器时报错：  
+
+
+> 'error while loading shared libraries: libcurl-gnutls.so.4: cannot open shared object file: No such file or directory'
+
+说明依赖项没有装好，最好把上一步也做了防止出现该问题  
+
+## 2. 安装 steamcmd：
+创建steamcmd文件夹
+```
+mkdir ~/steamcmd
+cd ~/steamcmd
+```
+下载、解压并启动steamcmd  
+```
+wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+tar -xvzf steamcmd_linux.tar.gz
+./steamcmd.sh
+```
+输入左侧出现“steam>”说明steamcmd启动成功  
+接着，安装饥荒联机版
+```
+force_install_dir ../dontstarvetogether_dedicated_server
+login anonymous
+app_update 343050 validate
+quit
+````
+'app_update 343050 validate'是去steam中下载饥荒联机服务器的命令，需要等待一会，当执行完成后输入'quit'退出steam服务
