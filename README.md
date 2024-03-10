@@ -275,3 +275,4 @@ run_shared=(./dontstarve_dedicated_server_nullrenderer)
 
 sudo chmod u+x boot.sh
 饥荒服务器还剩下最后模组mods部分，下面单独放一个模块说明 
+# END树莓派为arm64版本无法运行和安装32位的steamcmd
