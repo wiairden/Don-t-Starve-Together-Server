@@ -1,4 +1,5 @@
 # Don-t-Starve-Together-Server
+# ！！！！！！！！！arm64无法开饥荒服务器！！！！！！！！！
 ## 清除烧录系统硬盘分区受到保护解决方法：  
 
 1.使用管理员进入CMD
@@ -18,6 +19,7 @@
 7.删除分区使用```delete partition```命令，恢复分区需要 强制保护参数【override】命令如下  
 
 ```delete partition override```
+
 # 使用的系统为ubuntu  
 ## 常用命令记录:  
 1. SSH 服务将会被自动启动。你可以验证 SSH 是否正在运行，输入：  
